@@ -1,0 +1,104 @@
+  // Анализируем
+    // - сравнения («больше», «меньше», «равно»);
+    // - присваивания;
+    // - выделение памяти.
+
+function size(array)  { // O(1)
+    return array.length;  //cost=1
+}
+
+function lineFind(array, val)  {  // O(n)
+    let i; //1
+    for (i = 0; i < arr.length; i++) { //1 + n + n
+        if(arr[i]===val) { //n
+            console.log(val+" - находиться по индексу "+i); //1
+           return true; //1
+        }
+        
+    }
+    console.log(val+"не найден ("+i+")"); //1
+    return false; //1
+}
+// 1+ 1+ n +n +n +1 +1 +1 +1 = 3n + 6 = 3n ~> O(n)
+
+
+function sortBubble(arr) { 
+    let isSorted; //1
+    do{
+        isSorted = false; // отслеживает факт перемещения   //1
+        for (let i = 0; i < arr.length - 1; i++) { // 1 + (n-1) + n
+            if (arr[i] > arr[i + 1]) { // n
+                let temp = arr[i]; //n
+                arr[i] = arr[i + 1]; //n
+                arr[i + 1] = temp; //n
+                isSorted = true; //n
+            }
+        }
+    } while (isSorted); //n
+    return arr; //1 
+} // 1 + (1 + 1+ (n-1) + n + n + n + n + n +n) * n +1 = 
+  // = 2 + (1 + 7n) n = 2 + 2n + 7n^2 = 2n + 7n^2 = 7n^2 ~> O(n^2); 
+
+  function sum(array)  { //O(n)
+    let sum = 0; // 1
+    for(let i=0; i<array.length; i++) { //1 + n +n
+        sum += array[i]; //n
+    }
+    return sum; //1
+  }
+// 1+1+n+n+n+1 = 3n+3 ~> O(n)
+
+function sum(array, n)  { //квадратный массив
+    let sum = 0; // 1
+    for(let i=0; i<n; i++) { //столбцы  //1 + n + n
+        for(let j=0; j<n; j++)  { //строки  //1 + n + n
+            sum += array[i][j]; //n*n
+        }
+    }
+    return sum; //1
+  }
+// 1+ (1+n+n)* (1+n+n) +n^2 +1 = 2 + (1+2n)*(1+2n) + n^2 =
+// = 2 + 1 + 2n + 2n + 4n^2 + n^2 = 3 + 4n + 5n^2 ~> O(n^2)  
+
+
+function sum_nlogn(n) {
+    let sum = 0; // 1
+    for(let i=0; i<n; i++) {   //1 + n + n
+        for(let j = 1; j < n; j = j * 2)  {   //1 + log n + log n
+            sum += i * j; //n * log n 
+        }
+    }
+    return sum; //1
+}
+//2 + (1 + 2n) (1 + 2 log n) + n * log n = 2 + 1 + 2 log n + 2n + 2n * 2 log n + n * log n 
+//  2 log n + 2n + 2(n * log n) + n * log n = 2log n + 2n + 3(n*log n) ~> O(n*log n)
+
+function sum_logn(n) { //O (log n)
+    let sum = 0; // 1
+    for(let j = 1; j < n; j = j * 2)  {   //1 + log n + log n
+        sum += i * j; //log n
+    }
+    return sum; //1
+} // 2 + 1 + log n + log n + log n = 3 + 3 log n  = O (log n)
+
+function sum(array, n)  { //кубический массив   O(n^3)
+    let sum = 0; // 1
+    for(let x=0; x < n; x++) {   //1 + n + n
+        for(let y=0; y < n; y++)  { //1 + n + n
+            for(let z=0; z < n; z++) { //1 + n + n
+                sum += array[x][y][z]; //n*n*n
+            }
+        }
+    }
+    return sum; //1
+  }
+
+let arr = [1,2,3,4,5,6];
+
+console.log("Size array O(1)- "+size(arr));
+console.log("Лин.поиск O(n) = "+lineFind(arr, 6));
+
+let arr1 = [1,6,3,2,5,4];
+console.log("Пузырек О(n^2)= "+sortBubble(arr1));
+
+
