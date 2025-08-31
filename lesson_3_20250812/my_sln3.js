@@ -63,3 +63,53 @@ console.log(factorialDoWhile(5)); // 120
 //           2. За один раз можно перемещать только один диск.
 //     Реализуйте два подхода для решения: итеративно и рекурсивно
 
+function hanoiRecursive(n, left, right, middle) {
+    if (n === 1) {
+        console.log(`Переместить диск 1 с ${left} на ${right}`);
+        return;
+    }
+    hanoiRecursive(n - 1, left, middle, right);
+    console.log(`Переместить диск ${n} с ${left} на ${right}`);
+    hanoiRecursive(n - 1, middle, right, left);
+}
+
+// Пример:
+console.log("Рекурсивное решение:");
+hanoiRecursive(3, "Левый", "Правый", "Средний");
+
+function moveDisk(from, to, fromRod, toRod) {
+    console.log(`Переместить диск с ${fromRod} на ${toRod}`);
+    to.push(from.pop());
+}
+
+function hanoiIterative(n) {
+    let left = [], middle = [], right = [];
+
+    // Заполняем левый стержень дисками (от большего к меньшему)
+    for (let i = n; i >= 1; i--) {
+        left.push(i);
+    }
+
+    let totalMoves = Math.pow(2, n) - 1;
+
+    let leftRod = "Левый", rightRod = "Правый", middleRod = "Средний";
+
+    // Если дисков чётное — меняем местами правый и средний
+    if (n % 2 === 0) {
+        [rightRod, middleRod] = [middleRod, rightRod];
+    }
+
+    for (let i = 1; i <= totalMoves; i++) {
+        if (i % 3 === 1) {
+            moveDisk(left, right, leftRod, rightRod);
+        } else if (i % 3 === 2) {
+            moveDisk(left, middle, leftRod, middleRod);
+        } else if (i % 3 === 0) {
+            moveDisk(middle, right, middleRod, rightRod);
+        }
+    }
+}
+
+// Пример:
+console.log("\nИтеративное решение:");
+hanoiIterative(3);
