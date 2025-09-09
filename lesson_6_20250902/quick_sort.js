@@ -11,12 +11,14 @@ function quickSort(array, start, end) {
 }
 
 function partition(array, start, end) {
-    
-    let pivot = array[end]; // выбираем опорный элемент
+    //let pivot = start + Math.floor((end - start) / 2); //вычисляем index середины
+    //let pivot = array[end]; // выбираем опорный элемент (последний)
+    let pivot = array[0]; // выбираем опорный элемент (первый)
     let indexPivot = start; // Индекс первого элемента для сравнения с опорным
 
     for (let i = start; i < end; i++) {
-        if (array[i] >= pivot) {
+        if (array[i] >= pivot) { // в порядке убывания
+        //if (array[i] <= pivot) { //в порядке возрастания
             swap(array, i, indexPivot);
             indexPivot++;
         }
