@@ -6,7 +6,7 @@ class DynamicArray {
         this.k = koef;  // коэффициент расширения (приращения)
     }
 
-    //добавляем в конец массива
+    //добавляем в конец массива O(1)
     add(data) {
         if(this.count === this.size) {
           this.growSize();
@@ -15,7 +15,7 @@ class DynamicArray {
         this.count++;
     }
 
-    //удаляем последний элемент    
+    //удаляем последний элемент O(1)   
     remove() {
         if (this.count > 0) {
             this.array[this.count - 1] = undefined;
@@ -98,10 +98,12 @@ class DynamicArray {
         this.count++;
     }
 
+    //O(n)
     addFirst(data) { //добавление в начало
         this.addAt(0, data);
     }
 
+    //O(n)
     removeFirst(data) { //удаление первого элемента
         this.removeAt(0, data);
     }
@@ -109,7 +111,7 @@ class DynamicArray {
     print() {
         console.log("Элементы DynamicArray:")
         for(let i=0; i<da.count; i++) {
-            console.log(da.array[i]+" ");
+            console.log(da.array[i]+", ");
         }
     }
 

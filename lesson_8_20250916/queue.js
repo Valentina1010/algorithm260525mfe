@@ -52,6 +52,47 @@ class Queue { //очередь для хранения положительны�
     }
 }
 
+class SpecialQueue extends Queue {
+    constructor() {
+        super();
+        this.MAX = -1;
+    }
+
+    getMax() {
+        let max = this.arr[0];
+        for (let i = 0; i < this.count; i++) {
+            if (this.arr[i] > max) {
+                max = this.arr[i];
+            }
+        }
+        console.log(`Максимальное число ${max}`);
+    }
+
+    getMaxO1() { //O(1)
+       return this.MAX;
+    }
+
+    findMax() {
+        let max = this.arr[0];
+        for (let i = 0; i < this.count; i++) {
+            if (this.arr[i] > max) {
+                max = this.arr[i];
+            }
+        }
+        this.MAX = max;
+    }
+
+    //добавление
+    push(x) {
+        super.push(x);
+        this.findMax(); //O(n)
+    }
+
+
+}
+
+
+
 let queue = new Queue(5);
 
 queue.push(10);
@@ -63,3 +104,12 @@ console.log("pop = "+queue.pop());
 queue.print();
 console.log("peek = "+queue.peek());
 queue.print();
+
+let specialQueue = new SpecialQueue();
+specialQueue.push(10);
+specialQueue.push(20);
+specialQueue.push(30);
+specialQueue.push(15);
+
+specialQueue.getMax();
+console.log("getMaxO1 - "+specialQueue.getMaxO1());
