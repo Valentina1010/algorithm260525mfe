@@ -1,0 +1,12 @@
+1) Реализовать методы в LinkedList, которые не успели в классе.
+push(int index, int data)
+removeLast(), 
+remove(int index)
+get(int index)
+size()
+
+2*) *В LinkedList обьекте создать искусственно петлю в связном списке.
+Написать метод detectLoop, который проверяет, есть ли петля в LinkedList.
+
+
+3*) *Переделать односвязный список LinkedList в двусвязный
