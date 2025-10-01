@@ -62,7 +62,7 @@ class SpecialStack extends Stack {
         return min;
     }
 
-    getMinO1() { //O(n)
+    getMinO1() { //O(1)
         return this.MIN;
     }
 

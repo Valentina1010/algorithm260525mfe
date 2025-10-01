@@ -52,13 +52,15 @@ class Queue { //очередь для хранения положительны�
     }
 }
 
+//Домашнее задание
+
 class SpecialQueue extends Queue {
     constructor() {
         super();
         this.MAX = -1;
     }
 
-    getMax() {
+    getMax() { //O(n)
         let max = this.arr[0];
         for (let i = 0; i < this.count; i++) {
             if (this.arr[i] > max) {
